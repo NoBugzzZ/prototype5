@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3231182272590289891}
   m_Layer: 0
   m_Name: Good 1
-  m_TagString: Untagged
+  m_TagString: Good
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,3 +145,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5dfc41cb22c314faa1ccf22f036a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 1
+  particle: {fileID: 2478549635105912040, guid: ec46c8c4a3cbc429382ee48bd9169b45, type: 3}
