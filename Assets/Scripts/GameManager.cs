@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public bool isGameActive = false;
     private int difficulty;
     public int throwSpeed = 3;
+    private int lives = 3;
+    private TextMeshProUGUI livesText;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +29,14 @@ public class GameManager : MonoBehaviour
 
         gameOverText.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
+
+        livesText = GameObject.Find("Lives").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (score < 0)
+        if (lives <= 0)
         {
             GameOver();
         }
@@ -42,6 +46,12 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
+    }
+
+    public void MinusLives(int livesToMinus)
+    {
+        lives -= livesToMinus;
+        livesText.text = "Lives: " + lives;
     }
 
     IEnumerator SpawnTargets()

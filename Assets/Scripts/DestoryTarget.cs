@@ -37,7 +37,7 @@ public class DestoryTarget : MonoBehaviour
             Destroy(gameObject);
             if (gameObject.CompareTag("Good")&&gameManager.isGameActive)
             {
-                gameManager.UpdateScore(-scoreValue);
+                gameManager.MinusLives(1);
             }
         }
     }
