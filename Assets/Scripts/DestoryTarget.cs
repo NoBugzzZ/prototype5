@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DestoryTarget : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class DestoryTarget : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (gameManager.isGameActive)
+        if (gameManager.isGameActive&&!EventSystem.current.IsPointerOverGameObject())
         {
             Destroy(gameObject);
             gameManager.UpdateScore(scoreValue);

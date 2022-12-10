@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public int throwSpeed = 3;
     private int lives = 3;
     private TextMeshProUGUI livesText;
+    private Slider volumn;
+    private bool isPause = false;
+    private GameObject mask;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,9 @@ public class GameManager : MonoBehaviour
         restartButton.gameObject.SetActive(false);
 
         livesText = GameObject.Find("Lives").GetComponent<TextMeshProUGUI>();
+        volumn = GameObject.Find("Volumn").GetComponentInChildren<Slider>();
+        mask = GameObject.Find("Mask");
+        mask.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,6 +46,23 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isPause = !isPause;
+            if (isPause)
+            {
+                GamePause();
+            }
+            else
+            {
+                GameResume();
+            }
+        }
+    }
+
+    public void SetVolumn(float volumn)
+    {
+        Debug.Log(volumn);
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -81,5 +104,17 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
         throwSpeed /= d;
         StartCoroutine(SpawnTargets());
+    }
+
+    public void GamePause()
+    {
+        Time.timeScale = 0;
+        mask.SetActive(true);
+    }
+
+    public void GameResume()
+    {
+        Time.timeScale = 1;
+        mask.SetActive(false);
     }
 }
