@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Mouse : MonoBehaviour
 {
-    private bool isDown = false;
+    public bool isDown = false;
+    private Camera main;
     // Start is called before the first frame update
     void Start()
     {
-        
+        main = Camera.main;
     }
 
     // Update is called once per frame
@@ -16,7 +17,8 @@ public class Mouse : MonoBehaviour
     {
         if (isDown)
         {
-            Debug.Log(Input.mousePosition);
+            Vector3 pos = main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector3(pos.x,pos.y,0);
         }
         if (Input.GetMouseButtonDown(0))
         {
