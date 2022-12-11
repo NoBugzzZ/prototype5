@@ -24,15 +24,16 @@ public class DestoryTarget : MonoBehaviour
 
     private void OnMouseDown()
     {
-        DestoryObj();
+        if (gameManager.isGameActive && !EventSystem.current.IsPointerOverGameObject())
+        {
+            Destroy(gameObject);
+            gameManager.UpdateScore(scoreValue);
+            Instantiate(particle, transform.position, transform.rotation);
+
+        }
     }
 
     private void OnMouseEnter()
-    {
-        DestoryObj();
-    }
-
-    private void DestoryObj()
     {
         if (mouse.isDown && gameManager.isGameActive && !EventSystem.current.IsPointerOverGameObject())
         {

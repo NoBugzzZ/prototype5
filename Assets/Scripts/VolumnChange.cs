@@ -15,6 +15,7 @@ public class VolumnChange : MonoBehaviour
         backgroundMusic = GameObject.Find("Background Music").GetComponent<AudioSource>();
 
         volumn.value = 0;
+        backgroundMusic.volume = 0;
     }
 
     // Update is called once per frame
